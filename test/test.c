@@ -1,7 +1,5 @@
-#include "cutils.h"
 #include "gui.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 char *fs_cmds[] = {
     "mkdir",
