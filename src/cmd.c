@@ -1,5 +1,33 @@
 #include "cmd.h"
 
+char *fs_cmds[] = {
+    "mkdir",
+    "rmdir",
+    "cd",
+    "ls",
+    "pwd",
+    "creat",
+    "rm",
+    "save",
+    "reload",
+    "menu",
+    "quit"
+};
+
+int (*sys_cmds[])(int argc, char **argv) = {
+    cmd_mkdir,
+    cmd_rmdir,
+    cmd_cd,
+    cmd_ls,
+    cmd_pwd,
+    cmd_creat,
+    cmd_rm,
+    cmd_save,
+    cmd_reload,
+    cmd_menu,
+    cmd_quit
+};
+
 int cmd_mkdir(int argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
@@ -65,8 +93,6 @@ int cmd_quit(int argc, char **argv) {
     char *dir_path = argv[0];
     
 }
-
-#include <stdio.h>
 
 void get_cmd(const char *buffer, char *cmd) {
     int f_space_index = str_find(buffer, ' ');
