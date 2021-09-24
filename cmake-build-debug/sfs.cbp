@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="sfs"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/ellen/CLionProjects/sfs/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/ellen/CLionProjects/sfs/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/ellen/CLionProjects/sfs/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sfs">
+				<Option output="/home/ellen/CLionProjects/sfs/cmake-build-debug/sfs" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ellen/CLionProjects/sfs/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 sfs"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sfs/fast">
+				<Option output="/home/ellen/CLionProjects/sfs/cmake-build-debug/sfs" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ellen/CLionProjects/sfs/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 sfs/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/home/ellen/CLionProjects/sfs/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/ellen/CLionProjects/sfs/cmd.c">
+			<Option target="sfs"/>
+		</Unit>
+		<Unit filename="/home/ellen/CLionProjects/sfs/cmd.h">
+			<Option target="sfs"/>
+		</Unit>
+		<Unit filename="/home/ellen/CLionProjects/sfs/cutils.c">
+			<Option target="sfs"/>
+		</Unit>
+		<Unit filename="/home/ellen/CLionProjects/sfs/cutils.h">
+			<Option target="sfs"/>
+		</Unit>
+		<Unit filename="/home/ellen/CLionProjects/sfs/gui.c">
+			<Option target="sfs"/>
+		</Unit>
+		<Unit filename="/home/ellen/CLionProjects/sfs/gui.h">
+			<Option target="sfs"/>
+		</Unit>
+		<Unit filename="/home/ellen/CLionProjects/sfs/test.c">
+			<Option target="sfs"/>
+		</Unit>
+		<Unit filename="/home/ellen/CLionProjects/sfs/utils.c">
+			<Option target="sfs"/>
+		</Unit>
+		<Unit filename="/home/ellen/CLionProjects/sfs/utils.h">
+			<Option target="sfs"/>
+		</Unit>
+		<Unit filename="/home/ellen/CLionProjects/sfs/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

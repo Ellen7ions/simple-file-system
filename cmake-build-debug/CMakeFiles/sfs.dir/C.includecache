@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ellen/CLionProjects/sfs/cmd.h
+string.h
+-
+cutils.h
+/home/ellen/CLionProjects/sfs/cutils.h
+
+/home/ellen/CLionProjects/sfs/cutils.h
+stdlib.h
+-
+
+/home/ellen/CLionProjects/sfs/gui.c
+gui.h
+/home/ellen/CLionProjects/sfs/gui.h
+
+/home/ellen/CLionProjects/sfs/gui.h
+stdio.h
+-
+string.h
+-
+cutils.h
+/home/ellen/CLionProjects/sfs/cutils.h
+cmd.h
+/home/ellen/CLionProjects/sfs/cmd.h
+
