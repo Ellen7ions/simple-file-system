@@ -1,28 +1,22 @@
-#include "gui.h"
+#include "gui/gui.h"
 
 void gui_show(GUI *gui) {
 
 }
 
 void gui_top(GUI *gui) {
+    int *argc = (int *) malloc(sizeof(int));
+    char **argv = (char **) malloc((sizeof(char *) * 10));
     while (1) {
-        int *argc = (int *) malloc(sizeof(int));
-        char **argv = (char **) malloc((sizeof(char *) * 10));
-        gui_split_cmd(argc, argv);
-        printf("cmd = %s\n", argv[0]);
-        int i;
-        printf("argv:\n");
-        for (i = 0; i < *argc; i++) {
-            printf("%s\n", argv[i]);
-        }
-
+        int cmd_index = gui_input_cmd(argc, argv);
+        sys_cmds[cmd_index](argc, argv);
         if (strcmp(argv[0], "q") == 0 || strcmp(argv[0], "quit") == 0) {
             return;
         }
     }
 }
 
-int gui_split_cmd(int *argc, char **argv) {
+int gui_input_cmd(int *argc, char **argv) {
     char cmd_buffer[128];
     char input_cmd[100];
     printf(">");

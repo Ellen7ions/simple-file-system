@@ -1,4 +1,4 @@
-#include "cmd.h"
+#include "gui/cmd.h"
 
 char *fs_cmds[] = {
     "mkdir",
@@ -14,7 +14,7 @@ char *fs_cmds[] = {
     "quit"
 };
 
-int (*sys_cmds[])(int argc, char **argv) = {
+int (*sys_cmds[])(const int *argc, char **argv) = {
     cmd_mkdir,
     cmd_rmdir,
     cmd_cd,
@@ -28,67 +28,67 @@ int (*sys_cmds[])(int argc, char **argv) = {
     cmd_quit
 };
 
-int cmd_mkdir(int argc, char **argv) {
+int cmd_mkdir(const int *argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
     
 }
 
-int cmd_rmdir(int argc, char **argv) {
+int cmd_rmdir(const int *argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
     
 }
 
-int cmd_cd(int argc, char **argv) {
+int cmd_cd(const int *argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
     
 }
 
-int cmd_ls(int argc, char **argv) {
+int cmd_ls(const int *argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
     
 }
 
-int cmd_pwd(int argc, char **argv) {
+int cmd_pwd(const int *argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
     
 }
 
-int cmd_creat(int argc, char **argv) {
+int cmd_creat(const int *argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
     
 }
 
-int cmd_rm(int argc, char **argv) {
+int cmd_rm(const int *argc, char **argv) {
+    if (argc == 0) return -1;
+    char *dir_path = argv[0];
+
+}
+
+int cmd_save(const int *argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
     
 }
 
-int cmd_save(int argc, char **argv) {
+int cmd_reload(const int *argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
     
 }
 
-int cmd_reload(int argc, char **argv) {
+int cmd_menu(const int *argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
     
 }
 
-int cmd_menu(int argc, char **argv) {
-    if (argc == 0) return -1;
-    char *dir_path = argv[0];
-    
-}
-
-int cmd_quit(int argc, char **argv) {
+int cmd_quit(const int *argc, char **argv) {
     if (argc == 0) return -1;
     char *dir_path = argv[0];
     

@@ -3,7 +3,9 @@
 
 #include <stdio.h>
 #include <string.h>
-#include "cutils.h"
+
+#include "utils/utils.h"
+#include "utils/cutils.h"
 #include "cmd.h"
 
 typedef struct GUI {
@@ -12,7 +14,7 @@ typedef struct GUI {
 
 void gui_top(GUI* gui);
 
-int gui_split_cmd(int *argc, char **argv);
+int gui_input_cmd(int *argc, char **argv);
 
 void gui_show(GUI* gui);
 
