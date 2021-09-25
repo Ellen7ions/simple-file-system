@@ -2,6 +2,7 @@
 #define _CMD_H_
 
 #include <string.h>
+#include "fs/fs.h"
 #include "utils/cutils.h"
 
 extern char *fs_cmds[];

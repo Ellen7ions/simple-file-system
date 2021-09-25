@@ -9,10 +9,8 @@ void gui_top(GUI *gui) {
     char **argv = (char **) malloc((sizeof(char *) * 10));
     while (1) {
         int cmd_index = gui_input_cmd(argc, argv);
-        sys_cmds[cmd_index](argc, argv);
-        if (strcmp(argv[0], "q") == 0 || strcmp(argv[0], "quit") == 0) {
-            return;
-        }
+        int flag = sys_cmds[cmd_index](argc, argv);
+        if (flag == -2) break;
     }
 }
 

@@ -20,6 +20,7 @@ void str_cpy_s(char *dst, int len, const char *src) {
     for (i; i < len; i++) {
         *(dst + i) = *(src + i);
     }
+    *(dst + i) = '\0';
 }
 
 void str_to_arr(const char *buffer, int *len, char **result) {
