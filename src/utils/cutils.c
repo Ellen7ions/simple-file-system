@@ -34,6 +34,7 @@ void str_to_arr(const char *buffer, int *len, char **result) {
         if (*(buffer + i) == ' ') {
             if (word_is_putting) {
                 word_is_putting = 0;
+                *(word_buffer + word_pointer) = '\0';
                 *(result + *(len)) = word_buffer;
                 *(len) += 1;
                 word_buffer = (char *) malloc(sizeof(char) * 100);
@@ -50,6 +51,7 @@ void str_to_arr(const char *buffer, int *len, char **result) {
         i += 1;
     }
     if (word_is_putting) {
+        *(word_buffer + word_pointer) = '\0';
         *(result + *(len)) = word_buffer;
         *(len) += 1;
     }
