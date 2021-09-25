@@ -13,6 +13,7 @@ typedef struct FileTreeNode {
     char file_type;
 } FileTreeNode;
 
+FileTreeNode *ftn_new(const char *file_name, char file_type, FileTreeNode *parent);
 
 /**
  * free the memory of node.

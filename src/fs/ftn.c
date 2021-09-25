@@ -1,14 +1,23 @@
 #include "fs/ftn.h"
 
+FileTreeNode *ftn_new(const char *file_name, char file_type, FileTreeNode *parent) {
+    FileTreeNode *ftn = (FileTreeNode *) kmalloc(sizeof(FileTreeNode));
+    strcpy(ftn->file_name, file_name);
+    ftn->file_type = file_type;
+    ftn->child = ftn->sibling = NULL;
+    ftn->parent = parent;
+    return ftn;
+}
+
 void ftn_add_node(FileTreeNode *cur, FileTreeNode *new_node) {
     if (cur->child == NULL) {
         cur->child = new_node;
-        new_node->parent = cur->child;
+        new_node->parent = cur;
     } else {
-        FileTreeNode *p = cur;
+        FileTreeNode *p = cur->child;
         while (p->sibling != NULL) p = p->sibling;
         p->sibling = new_node;
-        new_node->parent = p;
+        new_node->parent = cur;
     }
 }
 
@@ -20,6 +29,7 @@ void ftn_free_node(FileTreeNode *cur) {
 }
 
 void ftn_del_node(FileTreeNode *cur) {
+    if (cur == NULL) return;
     cur->parent->child = cur->sibling;
     ftn_free_node(cur->child);
     kfree(cur);
@@ -33,5 +43,6 @@ void ftn_traverse(FileTreeNode *root) {
 }
 
 void ftn_rename(FileTreeNode *cur, const char *name) {
+    if (cur == NULL) return;
     strcpy(cur->file_name, name);
 }

@@ -3,8 +3,11 @@
 
 #include "stdio.h"
 #include "stdlib.h"
+#include "string.h"
 
 char **parse_args(char *buffer, int *argc);
+
+char **parse_path(char *path, int *len);
 
 void *kmalloc(size_t size);
 
