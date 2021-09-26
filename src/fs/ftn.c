@@ -30,7 +30,11 @@ void ftn_free_node(FileTreeNode *cur) {
 
 void ftn_del_node(FileTreeNode *cur) {
     if (cur == NULL) return;
-    cur->parent->child = cur->sibling;
+    if (cur->parent->child == cur) {
+        cur->parent->child = cur->sibling;
+    } else if (cur->parent->sibling == cur) {
+        cur->parent->sibling = cur->sibling;
+    } else return;
     ftn_free_node(cur->child);
     kfree(cur);
 }

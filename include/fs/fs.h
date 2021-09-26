@@ -44,6 +44,8 @@ int fs_reload(const char *file_tree_path);
 
 void ft_to_arr(FileTreeNode *root, FileTreeNode *arr, int index);
 
-void arr_to_ft(FileTreeNode **root, FileTreeNode *arr, int index, FileTreeNode* parent);
+void arr_to_ft(FileTreeNode **root, FileTreeNode *arr, int index, FileTreeNode *parent);
+
+int fs_level(FileTreeNode *root);
 
 #endif

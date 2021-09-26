@@ -81,7 +81,7 @@ int fs_rmdir(const char *path, int force) {
 
 int fs_cd(const char *path) {
     FileTreeNode *path_node = fs_loc_node(path);
-    if (path_node == NULL) return -1;
+    if (path_node == NULL || path_node->file_type == 'F') return -1;
     file_system->cur_node = path_node;
     return 0;
 }
@@ -150,8 +150,17 @@ void arr_to_ft(FileTreeNode **root, FileTreeNode *arr, int index, FileTreeNode *
     arr_to_ft(&((*root)->sibling), arr, 2 * index + 2, *(root));
 }
 
+int fs_level(FileTreeNode *root) {
+    if (root == NULL) return 0;
+    int l = fs_level(root->child);
+    int r = fs_level(root->sibling);
+    return (l > r ? l : r) + 1;
+}
+
 int fs_save(const char *file_tree_path) {
-    FileTreeNode *ftn_arr = (FileTreeNode *) kmalloc(sizeof(FileTreeNode) * file_system->total_file_cnt);
+    int max_level = fs_level(file_system->root);
+    int max_node = (1 << max_level) - 1;
+    FileTreeNode *ftn_arr = (FileTreeNode *) kmalloc(sizeof(FileTreeNode) * max_node);
     ft_to_arr(file_system->root, ftn_arr, 0);
     FILE *fp;
     fp = fopen(file_tree_path, "wb");
@@ -159,7 +168,7 @@ int fs_save(const char *file_tree_path) {
         printf("FILE ERROR!\n");
         exit(-1);
     }
-    fwrite(ftn_arr, sizeof(FileTreeNode), file_system->total_file_cnt, fp);
+    fwrite(ftn_arr, sizeof(FileTreeNode), max_node, fp);
 
     fclose(fp);
     return 0;

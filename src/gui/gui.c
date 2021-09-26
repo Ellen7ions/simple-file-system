@@ -9,6 +9,10 @@ void gui_top(GUI *gui) {
     char **argv = (char **) malloc((sizeof(char *) * 10));
     while (1) {
         int cmd_index = gui_input_cmd(argc, argv);
+        if (cmd_index == -1) {
+            printf("Unrecognizable commands!\n");
+            continue;
+        }
         int flag = sys_cmds[cmd_index](argc, argv);
         if (flag == -2) break;
     }
