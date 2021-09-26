@@ -17,7 +17,7 @@ void ftn_add_node(FileTreeNode *cur, FileTreeNode *new_node) {
         FileTreeNode *p = cur->child;
         while (p->sibling != NULL) p = p->sibling;
         p->sibling = new_node;
-        new_node->parent = cur;
+        new_node->parent = p;
     }
 }
 
@@ -49,4 +49,10 @@ void ftn_traverse(FileTreeNode *root) {
 void ftn_rename(FileTreeNode *cur, const char *name) {
     if (cur == NULL) return;
     strcpy(cur->file_name, name);
+}
+
+FileTreeNode *ftn_father(FileTreeNode *cur) {
+    FileTreeNode *p = cur;
+    while (p->parent != p && p->parent->child != p) p = p->parent;
+    return p->parent;
 }

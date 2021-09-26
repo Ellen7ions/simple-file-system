@@ -7,7 +7,6 @@
 typedef struct FileSystem {
     FileTreeNode *root;
     FileTreeNode *cur_node;
-    long total_file_cnt;
 } FileSystem;
 
 extern FileSystem *file_system;
@@ -44,7 +43,7 @@ int fs_reload(const char *file_tree_path);
 
 void ft_to_arr(FileTreeNode *root, FileTreeNode *arr, int index);
 
-void arr_to_ft(FileTreeNode **root, FileTreeNode *arr, int index, FileTreeNode *parent);
+void arr_to_ft(FileTreeNode **root, FileTreeNode *arr, int index, int arr_size, FileTreeNode *parent);
 
 int fs_level(FileTreeNode *root);
 

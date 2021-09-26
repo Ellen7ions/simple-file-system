@@ -48,4 +48,6 @@ void ftn_traverse(FileTreeNode *root);
  */
 void ftn_rename(FileTreeNode *cur, const char *name);
 
+FileTreeNode *ftn_father(FileTreeNode *cur);
+
 #endif

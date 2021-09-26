@@ -10,7 +10,6 @@ void fs_init(FileSystem *fs) {
     fs->root->child = NULL;
     fs->root->sibling = NULL;
     fs->root->parent = fs->root;
-    fs->total_file_cnt = 1;
 }
 
 FileTreeNode *fs_loc_node(const char *path) {
@@ -27,7 +26,7 @@ FileTreeNode *fs_loc_node(const char *path) {
     int i = 0;
     while (i < path_level && strcmp(p->file_name, paths[i]) != 0) {
         if (strcmp(paths[i], "..") == 0) {
-            p = p->parent;
+            p = ftn_father(p);
             i += 1;
             continue;
         } else if (strcmp(paths[i], ".") == 0) {
@@ -51,7 +50,7 @@ void fs_print_pwd(FileTreeNode *cur) {
     if (cur->parent == cur) {
         return;
     }
-    fs_print_pwd(cur->parent);
+    fs_print_pwd(ftn_father(cur));
     printf("/%s", cur->file_name);
 }
 
@@ -63,7 +62,6 @@ int fs_mkdir(const char *base_path, const char *dir_name) {
         if (strcmp(p->file_name, dir_name) == 0) return 1;
         p = p->sibling;
     }
-    file_system->total_file_cnt += 1;
     ftn_add_node(path_node, ftn_new(dir_name, 'D', NULL));
     return 0;
 }
@@ -73,7 +71,6 @@ int fs_rmdir(const char *path, int force) {
     if (path_node == NULL) return -1;
     if (force || path_node->child == NULL) {
         ftn_del_node(path_node);
-        file_system->total_file_cnt -= 1;
         return 0;
     }
     return 1;
@@ -117,7 +114,6 @@ int fs_creat(const char *path, const char *file_name) {
         p = p->sibling;
     }
     ftn_add_node(path_node, ftn_new(file_name, 'F', NULL));
-    file_system->total_file_cnt += 1;
     return 0;
 }
 
@@ -132,7 +128,6 @@ int fs_rm(const char *path, const char *file_name) {
     return 1;
     found:
     ftn_del_node(p);
-    file_system->total_file_cnt -= 1;
     return 0;
 }
 
@@ -143,11 +138,13 @@ void ft_to_arr(FileTreeNode *root, FileTreeNode *arr, int index) {
     ft_to_arr(root->sibling, arr, 2 * index + 2);
 }
 
-void arr_to_ft(FileTreeNode **root, FileTreeNode *arr, int index, FileTreeNode *parent) {
-    if (index >= file_system->total_file_cnt || root == NULL) return;
+void arr_to_ft(FileTreeNode **root, FileTreeNode *arr, int index, int arr_size, FileTreeNode *parent) {
+    if (index >= arr_size || root == NULL) return;
     *(root) = ftn_new(arr[index].file_name, arr[index].file_type, parent);
-    arr_to_ft(&((*root)->child), arr, 2 * index + 1, *(root));
-    arr_to_ft(&((*root)->sibling), arr, 2 * index + 2, *(root));
+    if (arr[index].child != NULL)
+        arr_to_ft(&((*root)->child), arr, 2 * index + 1, arr_size, *(root));
+    if (arr[index].sibling != NULL)
+        arr_to_ft(&((*root)->sibling), arr, 2 * index + 2, arr_size, *(root));
 }
 
 int fs_level(FileTreeNode *root) {
@@ -182,12 +179,13 @@ int fs_reload(const char *file_tree_path) {
         exit(-1);
     }
     fseek(fp, 0, SEEK_END);
-    file_system->total_file_cnt = ftell(fp) / sizeof(FileTreeNode);
+    int arr_size = ftell(fp) / sizeof(FileTreeNode);
     fseek(fp, 0, SEEK_SET);
-    FileTreeNode *ftn_arr = (FileTreeNode *) kmalloc(sizeof(FileTreeNode) * file_system->total_file_cnt);
-    fread(ftn_arr, sizeof(FileTreeNode), file_system->total_file_cnt, fp);
-    arr_to_ft(&(file_system->root), ftn_arr, 0, file_system->root);
+    FileTreeNode *ftn_arr = (FileTreeNode *) kmalloc(sizeof(FileTreeNode) * arr_size);
+    fread(ftn_arr, sizeof(FileTreeNode), arr_size, fp);
+    arr_to_ft(&(file_system->root), ftn_arr, 0, arr_size, file_system->root);
     file_system->cur_node = file_system->root;
+    file_system->root->parent = file_system->root;
     fclose(fp);
     return 0;
 }
